@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>All Members</h1>
+
+<p>
+    <a asp-controller="Members" asp-action="Add">Add Member</a>
+</p>
+
+
+<p>
+    <a asp-controller="Members" asp-action="Delete">Delete Member</a>
+</p>
+
+@if (Model.Count == 0)
+{
+    <p>No Members yet!</p>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                US Shoe Size
+            </th>
+            <th>
+                Shoe Type
+            </th>
+        </tr>
+        @foreach (var mem in Model)
+        {
+            <tr>
+                <td>@mem.Name</td>
+                <td>@mem.ShoeSize</td>
+                <td>@mem.ShoeType</td>
+
+                <td><a asp-controller="Members" asp-action="Edit" asp-route-id="@mem.Id">Edit Member</a></td>
+                <td>
+
+                    <a class="btn btn-primary" asp-controller="Members" asp-action="Result" asp-route-id="@mem.Id">Result for Member</a>
+                </td>
+
+
+
+            </tr>
+        }
+    </table>
+}
