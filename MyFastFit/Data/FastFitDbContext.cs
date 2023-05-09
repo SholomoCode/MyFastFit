@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MyFastFit.Models;
+using Microsoft.Extensions.Logging;
 
 namespace MyFastFit.Data
 {
@@ -11,6 +12,11 @@ namespace MyFastFit.Data
 
         public FastFitDbContext(DbContextOptions<FastFitDbContext> options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
